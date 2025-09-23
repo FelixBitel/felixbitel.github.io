@@ -1,188 +1,831 @@
 <!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Felix Bitel — Futuristisches Portfolio</title>
-  <meta name="description" content="Portfolio von Felix Bitel: Illustrationen, Design, Layouts, Logos, Karriere, Kontakt." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css2.css" />
-  <link rel="icon" href="images/favicon.png" />
-  <meta property="og:title" content="Felix Bitel — Portfolio" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="images/preview.jpg" />
-  <meta property="og:locale" content="de_DE" />
-  <style>
-    :root{--bg:#0a0c10;--fg:#e6f1ff;--muted:#9fb3c8;--acc:#00d1ff;--acc2:#7b61ff;--card:#0f1320;}
-    *{box-sizing:border-box}
-    html,body{margin:0;height:100%;scroll-behavior:smooth;background:radial-gradient(1200px 600px at 80% -20%,rgba(0,209,255,.15),transparent 60%),radial-gradient(800px 400px at 10% 10%,rgba(123,97,255,.12),transparent 55%),var(--bg);color:var(--fg);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
-    a{color:var(--acc)}
-    header{position:sticky;top:0;backdrop-filter:saturate(160%) blur(10px);background:linear-gradient(180deg,rgba(10,12,16,.8),rgba(10,12,16,.4));border-bottom:1px solid rgba(255,255,255,.05);z-index:50}
-    .nav{display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto;padding:14px 20px}
-    .brand{display:flex;gap:10px;align-items:center;font-family:Orbitron,Inter;font-weight:800;letter-spacing:.06em}
-    .brand .dot{width:10px;height:10px;border-radius:50%;background:conic-gradient(from 0deg,var(--acc),var(--acc2));box-shadow:0 0 12px var(--acc)}
-    .nav a{color:var(--fg);text-decoration:none;opacity:.9}
-    .nav .links{display:flex;gap:18px}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));color:var(--fg)}
-    .hero{position:relative;isolation:isolate;overflow:hidden}
-    .hero .wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr .8fr;gap:28px;padding:80px 20px}
-    .title{font-family:Orbitron,Inter;font-size:clamp(32px,6vw,56px);line-height:1.02;margin:8px 0;background:linear-gradient(90deg,var(--fg),#b6eaff 40%,#c8c2ff 70%);-webkit-background-clip:text;background-clip:text;color:transparent}
-    .subtitle{color:var(--muted);font-size:18px;max-width:60ch}
-    .chip{display:inline-flex;align-items:center;gap:8px;background:rgba(123,97,255,.14);border:1px solid rgba(123,97,255,.3);padding:6px 10px;border-radius:999px;color:#cfd8ff;font-size:12px}
-    .cta{display:flex;gap:12px;margin-top:18px}
-    canvas#orb{position:absolute;inset:0;z-index:-1;opacity:.5}
-    .card{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:18px}
-    section{scroll-margin-top:80px}
-    .section{max-width:1100px;margin:0 auto;padding:56px 20px}
-    .section h2{font-family:Orbitron,Inter;letter-spacing:.05em;margin:0 0 18px}
-    .grid{display:grid;gap:18px}
-    .grid.cards{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-    .timeline{position:relative;margin:24px 0;padding-left:22px}
-    .timeline:before{content:"";position:absolute;left:6px;top:0;bottom:0;width:2px;background:linear-gradient(var(--acc),transparent)}
-    .tl-item{position:relative;margin:14px 0}
-    .tl-item:before{content:"";position:absolute;left:-2px;top:8px;width:14px;height:14px;border-radius:50%;background:radial-gradient(var(--acc),#003d4a)}
-    .tl-title{font-weight:600}
-    .tl-meta{color:var(--muted);font-size:13px}
-    .gallery{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-    .gallery a{position:relative;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.08);background:var(--card)}
-    .gallery img{width:100%;height:220px;object-fit:cover;display:block;transition:transform .4s ease}
-    .gallery a:hover img{transform:scale(1.05)}
-    form{display:grid;gap:12px;margin-top:8px}
-    input,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.02);color:var(--fg)}
-    textarea{min-height:120px;resize:vertical}
-    footer{border-top:1px solid rgba(255,255,255,.06);margin-top:40px}
-    .foot{max-width:1100px;margin:0 auto;padding:22px 20px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-  </style>
-</head>
-<body>
-  <header>
-    <nav class="nav">
-      <div class="brand"><span class="dot"></span>Felix Bitel</div>
-      <div class="links">
-        <a href="#arbeiten">Arbeiten</a>
-        <a href="#timeline">Karriere</a>
-        <a href="#about">Über mich</a>
-        <a href="#kontakt" class="btn">Kontakt</a>
-      </div>
-    </nav>
-  </header>
-
-  <section class="hero" aria-label="Intro">
-    <canvas id="orb" aria-hidden="true"></canvas>
-    <div class="wrap">
-      <div>
-        <span class="chip">Portfolio • Illustration • Design • Layout</span>
-        <h1 class="title">Futuristisches Portfolio von Felix Bitel</h1>
-        <p class="subtitle">Seit über 30 Jahren illustriere ich Karikaturen, entwickle Editorial-Designs und Layouts für Poster, Zeitschriften und Bücher – digital wie analog. Eine kuratierte Auswahl finden Sie unten.</p>
-        <div class="cta">
-          <a class="btn" href="#arbeiten">Arbeiten ansehen</a>
-          <a class="btn" href="#kontakt">Projekt anfragen</a>
+<html style="font-size: 16px;" lang="ru"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="INTUITIVE">
+    <meta name="description" content="">
+    <title>Master</title>
+    <link rel="stylesheet" href="nicepage.css" media="screen">
+<link rel="stylesheet" href="Master.css" media="screen">
+    <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+    <meta name="generator" content="Nicepage 5.0.7, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    
+    
+    
+    
+    
+    
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": ""
+}</script>
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="Master">
+    <meta property="og:type" content="website">
+  </head>
+  <body data-home-page="Master.html" data-home-page-title="Master" class="u-body u-xl-mode" data-lang="ru"><header class="u-clearfix u-header u-header" id="sec-f628"><div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1">
+          <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
+            <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#">
+              <svg class="u-svg-link" viewBox="0 0 24 24"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use></svg>
+              <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect>
+</g></svg>
+            </a>
+          </div>
+          <div class="u-custom-menu u-nav-container">
+            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Master.html#sec-004f" style="padding: 10px 20px;">Zeichnungen</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Master.html#carousel_df0c" style="padding: 10px 20px;">Design</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Master.html#carousel_4eac" style="padding: 10px 20px;">Layout</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Master.html#carousel_7748" style="padding: 10px 20px;">Logos</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="mailto:felix.bitel.de@gmail.com" style="padding: 10px 20px;">Post</a>
+</li></ul>
+          </div>
+          <div class="u-custom-menu u-nav-container-collapse">
+            <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+              <div class="u-inner-container-layout u-sidenav-overflow">
+                <div class="u-menu-close"></div>
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Master.html#sec-004f">Zeichnungen</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Master.html#carousel_df0c">Design</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Master.html#carousel_4eac">Layout</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Master.html#carousel_7748">Logos</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="mailto:felix.bitel.de@gmail.com">Post</a>
+</li></ul>
+              </div>
+            </div>
+            <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+          </div>
+        </nav>
+      </div></header>
+    <section class="u-align-center u-clearfix u-custom-color-1 u-section-1" id="sec-2911">
+      <div class="u-clearfix u-sheet u-valign-middle-xs u-sheet-1">
+        <div class="u-clearfix u-expanded-width u-gutter-0 u-layout-wrap u-layout-wrap-1">
+          <div class="u-layout" style="">
+            <div class="u-layout-row" style="">
+              <div class="u-align-left u-container-style u-custom-color-1 u-layout-cell u-left-cell u-size-25-lg u-size-25-md u-size-25-sm u-size-25-xs u-size-26-xl u-size-xs-60 u-layout-cell-1" src="">
+                <div class="u-container-layout u-valign-middle-lg u-valign-middle-md u-valign-middle-xl u-container-layout-1" src="">
+                  <img class="u-absolute-hcenter-sm u-absolute-hcenter-xs u-align-left u-expanded-height-lg u-expanded-height-md u-expanded-height-sm u-expanded-height-xs u-image u-image-1" src="images/7_223934175.png" data-image-width="1187" data-image-height="1346">
+                </div>
+              </div>
+              <div class="u-align-right u-container-style u-custom-color-1 u-layout-cell u-right-cell u-size-34-xl u-size-35-lg u-size-35-md u-size-35-sm u-size-35-xs u-size-xs-60 u-layout-cell-2">
+                <div class="u-container-layout u-container-layout-2">
+                  <h2 class="u-text u-text-1">
+                    <span style="font-size: 3rem;"> Felix Bitel</span>
+                    <br>
+                    <span style="font-size: 3.75rem;">PORTFOLIO</span>
+                  </h2>
+                  <p class="u-text u-text-2"> Guten Tag,
+     mein Name ist Felix Bitel.&nbsp;<br>Seit dreißig Jahren zeichne ich Illustrationen und Karikaturen.
+     Außerdem erstelle ich Designs und Layouts für Poster, Zeitschriften und Bücher.&nbsp;<br>Dafür verwende ich digitale Werkzeuge 
+genauso gerne wie Stift und Papier – je nachdem, was gerade besser 
+passt.&nbsp;<br>Ich interessiere mich für die Verbindung von modernen&nbsp;digitalen 
+Möglichkeiten und traditioneller Kunst.&nbsp;<br>Hier können 
+Sie eine Auswahl meiner Arbeiten kennenlernen.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <aside class="card" id="about">
-        <strong>Über mich</strong>
-        <p>Interesse an der Verbindung moderner digitaler Möglichkeiten mit traditioneller Kunst. Tools: Adobe CC, Procreate, InDesign; außerdem Stift & Papier.</p>
-        <a href="Master.html#sec-2911">Mehr erfahren</a>
-      </aside>
-    </div>
-  </section>
-
-  <section class="section" id="arbeiten" aria-label="Galerie der Arbeiten">
-    <h2>Arbeiten</h2>
-    <p class="subtitle">Eine Auswahl von Zeichnungen, Design, Layouts und Logos aus dem Archiv.</p>
-    <div class="gallery">
-      <a href="Zeichnungen.html#sec-004f" aria-label="Zeichnungen">
-        <img src="images/Zeichnungen_1.jpg" alt="Zeichnungen Vorschau" onerror="this.src='images/placeholder.jpg'">
-      </a>
-      <a href="Design.html#carousel_df0c" aria-label="Design">
-        <img src="images/Design_1.jpg" alt="Design Vorschau" onerror="this.src='images/placeholder.jpg'">
-      </a>
-      <a href="Layout.html#carousel_4eac" aria-label="Layout">
-        <img src="images/Layout_1.jpg" alt="Layout Vorschau" onerror="this.src='images/placeholder.jpg'">
-      </a>
-      <a href="Master.html#carousel_7748" aria-label="Logos">
-        <img src="images/Logos_1.jpg" alt="Logos Vorschau" onerror="this.src='images/placeholder.jpg'">
-      </a>
-    </div>
-
-    <div class="grid cards" style="margin-top:18px">
-      <div class="card"><strong>Zeichnungen</strong><p>Illustrationen und Karikaturen – analog und digital.</p><a href="Zeichnungen.html">Zur Galerie</a></div>
-      <div class="card"><strong>Design</strong><p>Editorial- und Plakatdesign mit typografischem Fokus.</p><a href="Design.html">Zur Galerie</a></div>
-      <div class="card"><strong>Layout</strong><p>Magazin-, Buch- und Poster-Layouts.</p><a href="Layout.html">Zur Galerie</a></div>
-      <div class="card"><strong>Logos</strong><p>Markenauftritte und Signets.</p><a href="Master.html#carousel_7748">Zur Galerie</a></div>
-    </div>
-  </section>
-
-  <section class="section" id="timeline" aria-label="Karriere-Timeline">
-    <h2>Karriere</h2>
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-title">Freiberuflicher Illustrator & Designer</div>
-        <div class="tl-meta">1990er – Heute · Editorial, Plakat, Buch</div>
+    </section>
+    <section class="u-align-center u-clearfix u-custom-color-1 u-section-2" id="sec-004f">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-clearfix u-expanded-width u-gutter-0 u-layout-wrap u-layout-wrap-1">
+          <div class="u-layout" style="">
+            <div class="u-layout-row" style="">
+              <div class="u-align-left u-container-style u-layout-cell u-left-cell u-shape-rectangle u-size-35 u-size-xs-60 u-layout-cell-1" src="">
+                <div class="u-container-layout u-container-layout-1" src="">
+                  <div class="u-border-custom-color-1 u-carousel u-expanded-width-sm u-expanded-width-xs u-gallery u-gallery-slider u-layout-carousel u-lightbox u-no-transition u-show-text-on-hover u-gallery-1" data-interval="5000" data-u-ride="carousel" id="carousel-6c96">
+                    <ol class="u-absolute-hcenter u-carousel-indicators u-carousel-indicators-1">
+                      <li data-u-target="#carousel-6c96" data-u-slide-to="0" class="u-active u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                      <li data-u-target="#carousel-6c96" data-u-slide-to="1" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                      <li data-u-target="#carousel-6c96" data-u-slide-to="2" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                      <li data-u-target="#carousel-6c96" data-u-slide-to="3" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                      <li data-u-target="#carousel-6c96" data-u-slide-to="4" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                      <li data-u-target="#carousel-6c96" data-u-slide-to="5" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                      <li data-u-target="#carousel-6c96" data-u-slide-to="6" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                      <li data-u-target="#carousel-6c96" data-u-slide-to="7" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                      <li data-u-target="#carousel-6c96" data-u-slide-to="8" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                      <li data-u-target="#carousel-6c96" data-u-slide-to="9" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                      <li data-u-target="#carousel-6c96" data-u-slide-to="10" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                      <li data-u-target="#carousel-6c96" data-u-slide-to="11" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                    </ol>
+                    <div class="u-carousel-inner u-gallery-inner" role="listbox">
+                      <div class="u-active u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-1">
+                        <div class="u-back-slide" data-image-width="1142" data-image-height="764">
+                          <img class="u-back-image u-expanded" src="images/Image04.jpg">
+                        </div>
+                        <div class="u-align-center u-container-align-left u-over-slide u-shading u-valign-bottom u-over-slide-1">
+                          <h3 class="u-align-left u-gallery-heading" style="width: 612px; margin-right: auto; margin-left: 0px;"></h3>
+                          <p class="u-align-left u-gallery-text" style="width: 612px; margin-right: auto; margin-left: 0px;"></p>
+                        </div>
+                      </div>
+                      <div class="u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-2">
+                        <div class="u-back-slide" data-image-width="850" data-image-height="1169">
+                          <img class="u-back-image u-expanded" src="images/Image-12.jpg">
+                        </div>
+                        <div class="u-align-center u-container-align-left u-over-slide u-shading u-valign-bottom u-over-slide-2">
+                          <h3 class="u-align-left u-gallery-heading" style="width: 612px; margin-right: auto; margin-left: 0px;"></h3>
+                          <p class="u-align-left u-gallery-text" style="width: 612px; margin-right: auto; margin-left: 0px;"></p>
+                        </div>
+                      </div>
+                      <div class="u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-3" data-image-width="1199" data-image-height="762">
+                        <div class="u-back-slide" data-image-width="701" data-image-height="461">
+                          <img class="u-back-image u-expanded" src="images/img_02611-u6026-fr.jpg">
+                        </div>
+                        <div class="u-align-center u-container-align-left u-over-slide u-shading u-valign-bottom u-over-slide-3">
+                          <h3 class="u-align-left u-gallery-heading" style="width: 612px; margin-right: auto; margin-left: 0px;"></h3>
+                          <p class="u-align-left u-gallery-text" style="width: 612px; margin-right: auto; margin-left: 0px;"></p>
+                        </div>
+                        <style data-mode="XL" data-visited="true"></style>
+                        <style data-mode="LG"></style>
+                        <style data-mode="MD"></style>
+                        <style data-mode="SM" data-visited="true"></style>
+                        <style data-mode="XS" data-visited="true"></style>
+                      </div>
+                      <div class="u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-4" data-image-width="667" data-image-height="478">
+                        <div class="u-back-slide">
+                          <img class="u-back-image u-expanded" src="images/image-101.jpg">
+                        </div>
+                        <div class="u-align-center u-container-align-left u-over-slide u-shading u-valign-bottom u-over-slide-4">
+                          <h3 class="u-align-left u-gallery-heading" style="width: 612px; margin-right: auto; margin-left: 0px;"></h3>
+                          <p class="u-align-left u-gallery-text" style="width: 612px; margin-right: auto; margin-left: 0px;"></p>
+                        </div>
+                        <style data-mode="XL"></style>
+                        <style data-mode="LG"></style>
+                        <style data-mode="MD"></style>
+                        <style data-mode="SM" data-visited="true"></style>
+                        <style data-mode="XS" data-visited="true"></style>
+                      </div>
+                      <div class="u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-5" data-image-width="604" data-image-height="526">
+                        <div class="u-back-slide">
+                          <img class="u-back-image u-expanded" src="images/image-081-u6024-fr.jpg">
+                        </div>
+                        <div class="u-align-center u-container-align-left u-over-slide u-shading u-valign-bottom u-over-slide-5">
+                          <h3 class="u-align-left u-gallery-heading" style="width: 612px; margin-right: auto; margin-left: 0px;"></h3>
+                          <p class="u-align-left u-gallery-text" style="width: 612px; margin-right: auto; margin-left: 0px;"></p>
+                        </div>
+                        <style data-mode="XL"></style>
+                        <style data-mode="LG"></style>
+                        <style data-mode="MD"></style>
+                        <style data-mode="SM" data-visited="true"></style>
+                        <style data-mode="XS" data-visited="true"></style>
+                      </div>
+                      <div class="u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-6" data-image-width="701" data-image-height="455">
+                        <div class="u-back-slide">
+                          <img class="u-back-image u-expanded" src="images/image-061-u6022-fr.jpg">
+                        </div>
+                        <div class="u-align-center u-container-align-left u-over-slide u-shading u-valign-bottom u-over-slide-6">
+                          <h3 class="u-align-left u-gallery-heading" style="width: 612px; margin-right: auto; margin-left: 0px;"></h3>
+                          <p class="u-align-left u-gallery-text" style="width: 612px; margin-right: auto; margin-left: 0px;"></p>
+                        </div>
+                        <style data-mode="XL"></style>
+                        <style data-mode="LG"></style>
+                        <style data-mode="MD"></style>
+                        <style data-mode="SM" data-visited="true"></style>
+                        <style data-mode="XS" data-visited="true"></style>
+                      </div>
+                      <div class="u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-7" data-image-width="494" data-image-height="525">
+                        <div class="u-back-slide">
+                          <img class="u-back-image u-expanded" src="images/img_02-u6027-fr.jpg">
+                        </div>
+                        <div class="u-align-center u-container-align-left u-over-slide u-shading u-valign-bottom u-over-slide-7">
+                          <h3 class="u-align-left u-gallery-heading" style="width: 612px; margin-right: auto; margin-left: 0px;"></h3>
+                          <p class="u-align-left u-gallery-text" style="width: 612px; margin-right: auto; margin-left: 0px;"></p>
+                        </div>
+                        <style data-mode="XL"></style>
+                        <style data-mode="LG"></style>
+                        <style data-mode="MD"></style>
+                        <style data-mode="SM" data-visited="true"></style>
+                        <style data-mode="XS" data-visited="true"></style>
+                      </div>
+                      <div class="u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-8" data-image-width="921" data-image-height="1106">
+                        <div class="u-back-slide" data-image-width="701" data-image-height="584">
+                          <img class="u-back-image u-expanded" src="images/image-017-u6029-fr.jpg">
+                        </div>
+                        <div class="u-align-center u-container-align-left u-over-slide u-shading u-valign-bottom u-over-slide-8">
+                          <h3 class="u-align-left u-gallery-heading" style="width: 612px; margin-right: auto; margin-left: 0px;"></h3>
+                          <p class="u-align-left u-gallery-text" style="width: 612px; margin-right: auto; margin-left: 0px;"></p>
+                        </div>
+                        <style data-mode="XL"></style>
+                        <style data-mode="LG"></style>
+                        <style data-mode="MD"></style>
+                        <style data-mode="SM" data-visited="true"></style>
+                        <style data-mode="XS" data-visited="true"></style>
+                      </div>
+                      <div class="u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-9" data-image-width="376" data-image-height="526">
+                        <div class="u-back-slide">
+                          <img class="u-back-image u-expanded" src="images/img_0241-u6025-fr.jpg">
+                        </div>
+                        <div class="u-align-center u-container-align-left u-over-slide u-shading u-valign-bottom u-over-slide-9">
+                          <h3 class="u-align-left u-gallery-heading" style="width: 612px; margin-right: auto; margin-left: 0px;"></h3>
+                          <p class="u-align-left u-gallery-text" style="width: 612px; margin-right: auto; margin-left: 0px;"></p>
+                        </div>
+                        <style data-mode="XL"></style>
+                        <style data-mode="LG"></style>
+                        <style data-mode="MD"></style>
+                        <style data-mode="SM" data-visited="true"></style>
+                        <style data-mode="XS" data-visited="true"></style>
+                      </div>
+                      <div class="u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-10" data-image-width="831" data-image-height="1128">
+                        <div class="u-back-slide">
+                          <img class="u-back-image u-expanded" src="images/Portfolio2022-02-22002.jpg">
+                        </div>
+                        <div class="u-align-center u-container-align-left u-over-slide u-shading u-valign-bottom u-over-slide-10">
+                          <h3 class="u-align-left u-gallery-heading" style="width: 612px; margin-right: auto; margin-left: 0px;"></h3>
+                          <p class="u-align-left u-gallery-text" style="width: 612px; margin-right: auto; margin-left: 0px;"></p>
+                        </div>
+                        <style data-mode="XL"></style>
+                        <style data-mode="LG"></style>
+                        <style data-mode="MD"></style>
+                        <style data-mode="SM" data-visited="true"></style>
+                        <style data-mode="XS" data-visited="true"></style>
+                      </div>
+                      <div class="u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-11" data-image-width="3013" data-image-height="4096">
+                        <div class="u-back-slide">
+                          <img class="u-back-image u-expanded" src="images/20220403_121144.jpg">
+                        </div>
+                        <div class="u-align-center u-container-align-left u-over-slide u-shading u-valign-bottom u-over-slide-11">
+                          <h3 class="u-align-left u-gallery-heading" style="width: 612px; margin-right: auto; margin-left: 0px;"></h3>
+                          <p class="u-align-left u-gallery-text" style="width: 612px; margin-right: auto; margin-left: 0px;"></p>
+                        </div>
+                        <style data-mode="XL"></style>
+                        <style data-mode="LG"></style>
+                        <style data-mode="MD"></style>
+                        <style data-mode="SM" data-visited="true"></style>
+                        <style data-mode="XS" data-visited="true"></style>
+                      </div>
+                      <div class="u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-12" data-image-width="1900" data-image-height="2572">
+                        <div class="u-back-slide">
+                          <img class="u-back-image u-expanded" src="images/20220403_121242.jpg">
+                        </div>
+                        <div class="u-align-center u-container-align-left u-over-slide u-shading u-valign-bottom u-over-slide-12">
+                          <h3 class="u-align-left u-gallery-heading" style="width: 612px; margin-right: auto; margin-left: 0px;"></h3>
+                          <p class="u-align-left u-gallery-text" style="width: 612px; margin-right: auto; margin-left: 0px;"></p>
+                        </div>
+                        <style data-mode="XL"></style>
+                        <style data-mode="LG"></style>
+                        <style data-mode="MD"></style>
+                        <style data-mode="SM" data-visited="true"></style>
+                        <style data-mode="XS" data-visited="true"></style>
+                      </div>
+                    </div>
+                    <a class="u-absolute-vcenter u-carousel-control u-carousel-control-prev u-grey-70 u-icon-circle u-opacity u-opacity-70 u-spacing-10 u-text-white u-carousel-control-1" href="#carousel-6c96" role="button" data-u-slide="prev">
+                      <span aria-hidden="true">
+                        <svg viewBox="0 0 451.847 451.847"><path d="M97.141,225.92c0-8.095,3.091-16.192,9.259-22.366L300.689,9.27c12.359-12.359,32.397-12.359,44.751,0
+c12.354,12.354,12.354,32.388,0,44.748L173.525,225.92l171.903,171.909c12.354,12.354,12.354,32.391,0,44.744
+c-12.354,12.365-32.386,12.365-44.745,0l-194.29-194.281C100.226,242.115,97.141,234.018,97.141,225.92z"></path></svg>
+                      </span>
+                      <span class="sr-only">
+                        <svg viewBox="0 0 451.847 451.847"><path d="M97.141,225.92c0-8.095,3.091-16.192,9.259-22.366L300.689,9.27c12.359-12.359,32.397-12.359,44.751,0
+c12.354,12.354,12.354,32.388,0,44.748L173.525,225.92l171.903,171.909c12.354,12.354,12.354,32.391,0,44.744
+c-12.354,12.365-32.386,12.365-44.745,0l-194.29-194.281C100.226,242.115,97.141,234.018,97.141,225.92z"></path></svg>
+                      </span>
+                    </a>
+                    <a class="u-absolute-vcenter u-carousel-control u-carousel-control-next u-grey-70 u-icon-circle u-opacity u-opacity-70 u-spacing-10 u-text-white u-carousel-control-2" href="#carousel-6c96" role="button" data-u-slide="next">
+                      <span aria-hidden="true">
+                        <svg viewBox="0 0 451.846 451.847"><path d="M345.441,248.292L151.154,442.573c-12.359,12.365-32.397,12.365-44.75,0c-12.354-12.354-12.354-32.391,0-44.744
+L278.318,225.92L106.409,54.017c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.391-12.359,44.75,0l194.287,194.284
+c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,248.292z"></path></svg>
+                      </span>
+                      <span class="sr-only">
+                        <svg viewBox="0 0 451.846 451.847"><path d="M345.441,248.292L151.154,442.573c-12.359,12.365-32.397,12.365-44.75,0c-12.354-12.354-12.354-32.391,0-44.744
+L278.318,225.92L106.409,54.017c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.391-12.359,44.75,0l194.287,194.284
+c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,248.292z"></path></svg>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="u-align-left u-container-style u-layout-cell u-opacity u-opacity-70 u-right-cell u-size-25 u-size-xs-60 u-white u-layout-cell-2">
+                <div class="u-border-1 u-border-grey-75 u-container-layout u-container-layout-2">
+                  <h2 class="u-text u-text-custom-color-1 u-text-default u-text-1"> Zeichnungen&nbsp;</h2>
+                  <a href="" class="u-border-2 u-border-white u-btn u-btn-rectangle u-button-style u-none u-btn-1">nach oben</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="tl-item">
-        <div class="tl-title">Schwerpunkte</div>
-        <div class="tl-meta">Karikatur, Illustration, Layout, Logos, Typografie</div>
+    </section>
+    <section class="u-align-center u-clearfix u-custom-color-1 u-section-3" id="carousel_df0c">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-clearfix u-expanded-width u-gutter-0 u-layout-wrap u-layout-wrap-1">
+          <div class="u-layout" style="">
+            <div class="u-layout-row" style="">
+              <div class="u-align-left u-container-style u-layout-cell u-left-cell u-shape-rectangle u-size-35 u-size-xs-60 u-layout-cell-1" src="">
+                <div class="u-container-layout u-container-layout-1" src="">
+                  <div class="u-border-custom-color-1 u-carousel u-expanded-width-sm u-expanded-width-xs u-gallery u-gallery-slider u-layout-carousel u-lightbox u-no-transition u-show-text-on-hover u-gallery-1" id="carousel-3d69" data-interval="5000" data-u-ride="carousel">
+                    <ol class="u-absolute-hcenter u-carousel-indicators u-carousel-indicators-1">
+                      <li data-u-target="#carousel-3d69" data-u-slide-to="0" class="u-active u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                      <li data-u-target="#carousel-3d69" data-u-slide-to="1" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                      <li data-u-target="#carousel-3d69" data-u-slide-to="2" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                      <li data-u-target="#carousel-3d69" data-u-slide-to="3" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                      <li data-u-target="#carousel-3d69" data-u-slide-to="4" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                      <li data-u-target="#carousel-3d69" data-u-slide-to="5" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                      <li data-u-target="#carousel-3d69" data-u-slide-to="6" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                      <li data-u-target="#carousel-3d69" data-u-slide-to="7" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                      <li data-u-target="#carousel-3d69" data-u-slide-to="8" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                    </ol>
+                    <div class="u-carousel-inner u-gallery-inner" role="listbox">
+                      <div class="u-active u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-1">
+                        <div class="u-back-slide" data-image-width="3309" data-image-height="2339">
+                          <img class="u-back-image u-expanded" src="images/Zwerg.jpg" alt="">
+                        </div>
+                        <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-1">
+                          <h3 class="u-gallery-heading"></h3>
+                          <p class="u-gallery-text"></p>
+                        </div>
+                      </div>
+                      <div class="u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-2">
+                        <div class="u-back-slide" data-image-width="2339" data-image-height="1654">
+                          <img class="u-back-image u-expanded" src="images/Gartner.jpg" alt="">
+                        </div>
+                        <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-2">
+                          <h3 class="u-gallery-heading"></h3>
+                          <p class="u-gallery-text"></p>
+                        </div>
+                      </div>
+                      <div class="u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-3" data-image-width="1174" data-image-height="2228">
+                        <div class="u-back-slide">
+                          <img class="u-back-image u-expanded" src="images/buklet5.jpg">
+                        </div>
+                        <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-3">
+                          <h3 class="u-gallery-heading"></h3>
+                          <p class="u-gallery-text"></p>
+                        </div>
+                      </div>
+                      <div class="u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-4" data-image-width="245" data-image-height="597">
+                        <div class="u-back-slide">
+                          <img class="u-back-image u-expanded" src="images/cloc2.png">
+                        </div>
+                        <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-4">
+                          <h3 class="u-gallery-heading"></h3>
+                          <p class="u-gallery-text"></p>
+                        </div>
+                      </div>
+                      <div class="u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-5" data-image-width="372" data-image-height="526">
+                        <div class="u-back-slide">
+                          <img class="u-back-image u-expanded" src="images/oktoberfest2022rgb-u6100-fr.jpg">
+                        </div>
+                        <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-5">
+                          <h3 class="u-gallery-heading"></h3>
+                          <p class="u-gallery-text"></p>
+                        </div>
+                      </div>
+                      <div class="u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-6" data-image-width="701" data-image-height="236">
+                        <div class="u-back-slide">
+                          <img class="u-back-image u-expanded" src="images/gemuesefw.jpg">
+                        </div>
+                        <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-6">
+                          <h3 class="u-gallery-heading"></h3>
+                          <p class="u-gallery-text"></p>
+                        </div>
+                      </div>
+                      <div class="u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-7" data-image-width="642" data-image-height="619">
+                        <div class="u-back-slide">
+                          <img class="u-back-image u-expanded" src="images/vc.jpg">
+                        </div>
+                        <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-7">
+                          <h3 class="u-gallery-heading"></h3>
+                          <p class="u-gallery-text"></p>
+                        </div>
+                      </div>
+                      <div class="u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-8" data-image-width="372" data-image-height="526">
+                        <div class="u-back-slide">
+                          <img class="u-back-image u-expanded" src="images/2baywa_stiftung_garten_kalendar_titel-2_1.jpg">
+                        </div>
+                        <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-8">
+                          <h3 class="u-gallery-heading"></h3>
+                          <p class="u-gallery-text"></p>
+                        </div>
+                      </div>
+                      <div class="u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-9" data-image-width="3753" data-image-height="3037">
+                        <div class="u-back-slide">
+                          <img class="u-back-image u-expanded" src="images/Ukr.jpg">
+                        </div>
+                        <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-9">
+                          <h3 class="u-gallery-heading"></h3>
+                          <p class="u-gallery-text"></p>
+                        </div>
+                      </div>
+                    </div>
+                    <a class="u-absolute-vcenter u-carousel-control u-carousel-control-prev u-grey-70 u-icon-circle u-opacity u-opacity-70 u-spacing-10 u-text-white u-carousel-control-1" href="#carousel-3d69" role="button" data-u-slide="prev">
+                      <span aria-hidden="true">
+                        <svg viewBox="0 0 451.847 451.847"><path d="M97.141,225.92c0-8.095,3.091-16.192,9.259-22.366L300.689,9.27c12.359-12.359,32.397-12.359,44.751,0
+c12.354,12.354,12.354,32.388,0,44.748L173.525,225.92l171.903,171.909c12.354,12.354,12.354,32.391,0,44.744
+c-12.354,12.365-32.386,12.365-44.745,0l-194.29-194.281C100.226,242.115,97.141,234.018,97.141,225.92z"></path></svg>
+                      </span>
+                      <span class="sr-only">
+                        <svg viewBox="0 0 451.847 451.847"><path d="M97.141,225.92c0-8.095,3.091-16.192,9.259-22.366L300.689,9.27c12.359-12.359,32.397-12.359,44.751,0
+c12.354,12.354,12.354,32.388,0,44.748L173.525,225.92l171.903,171.909c12.354,12.354,12.354,32.391,0,44.744
+c-12.354,12.365-32.386,12.365-44.745,0l-194.29-194.281C100.226,242.115,97.141,234.018,97.141,225.92z"></path></svg>
+                      </span>
+                    </a>
+                    <a class="u-absolute-vcenter u-carousel-control u-carousel-control-next u-grey-70 u-icon-circle u-opacity u-opacity-70 u-spacing-10 u-text-white u-carousel-control-2" href="#carousel-3d69" role="button" data-u-slide="next">
+                      <span aria-hidden="true">
+                        <svg viewBox="0 0 451.846 451.847"><path d="M345.441,248.292L151.154,442.573c-12.359,12.365-32.397,12.365-44.75,0c-12.354-12.354-12.354-32.391,0-44.744
+L278.318,225.92L106.409,54.017c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.391-12.359,44.75,0l194.287,194.284
+c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,248.292z"></path></svg>
+                      </span>
+                      <span class="sr-only">
+                        <svg viewBox="0 0 451.846 451.847"><path d="M345.441,248.292L151.154,442.573c-12.359,12.365-32.397,12.365-44.75,0c-12.354-12.354-12.354-32.391,0-44.744
+L278.318,225.92L106.409,54.017c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.391-12.359,44.75,0l194.287,194.284
+c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,248.292z"></path></svg>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="u-align-left u-container-style u-layout-cell u-opacity u-opacity-70 u-right-cell u-size-25 u-size-xs-60 u-white u-layout-cell-2">
+                <div class="u-border-1 u-border-grey-75 u-container-layout u-container-layout-2">
+                  <h2 class="u-text u-text-custom-color-1 u-text-default u-text-1"> Design&nbsp;&nbsp;</h2>
+                  <a href="" class="u-border-2 u-border-white u-btn u-btn-rectangle u-button-style u-none u-btn-1">nach oben</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="tl-item">
-        <div class="tl-title">Tools & Prozesse</div>
-        <div class="tl-meta">Adobe Photoshop, Illustrator, InDesign, Procreate · Digital & Analog</div>
+    </section>
+    <section class="u-align-center u-clearfix u-custom-color-1 u-section-4" id="carousel_4eac">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-clearfix u-expanded-width u-gutter-0 u-layout-wrap u-layout-wrap-1">
+          <div class="u-layout" style="">
+            <div class="u-layout-row" style="">
+              <div class="u-align-left u-container-style u-layout-cell u-left-cell u-shape-rectangle u-size-35 u-size-xs-60 u-layout-cell-1" src="">
+                <div class="u-container-layout u-container-layout-1" src="">
+                  <div class="u-border-custom-color-1 u-carousel u-expanded-width-sm u-expanded-width-xs u-gallery u-gallery-slider u-layout-carousel u-lightbox u-no-transition u-show-text-on-hover u-gallery-1" id="carousel-4425" data-interval="5000" data-u-ride="carousel">
+                    <ol class="u-absolute-hcenter u-carousel-indicators u-carousel-indicators-1">
+                      <li data-u-target="#carousel-4425" data-u-slide-to="0" class="u-active u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                      <li data-u-target="#carousel-4425" data-u-slide-to="1" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                      <li data-u-target="#carousel-4425" data-u-slide-to="2" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                      <li data-u-target="#carousel-4425" data-u-slide-to="3" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                      <li data-u-target="#carousel-4425" data-u-slide-to="4" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                      <li data-u-target="#carousel-4425" data-u-slide-to="5" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                      <li data-u-target="#carousel-4425" data-u-slide-to="6" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                      <li data-u-target="#carousel-4425" data-u-slide-to="7" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                      <li data-u-target="#carousel-4425" data-u-slide-to="8" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                    </ol>
+                    <div class="u-carousel-inner u-gallery-inner" role="listbox">
+                      <div class="u-active u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-1">
+                        <div class="u-back-slide" data-image-width="701" data-image-height="371">
+                          <img class="u-back-image u-expanded" src="images/messewand_498x263_www-4-u6096-fr.jpg" alt="">
+                        </div>
+                        <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-1">
+                          <h3 class="u-gallery-heading"></h3>
+                          <p class="u-gallery-text"></p>
+                        </div>
+                      </div>
+                      <div class="u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-2">
+                        <div class="u-back-slide" data-image-width="701" data-image-height="371">
+                          <img class="u-back-image u-expanded" src="images/messewand_498x263_www-3-u6095-fr.jpg" alt="">
+                        </div>
+                        <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-2">
+                          <h3 class="u-gallery-heading"></h3>
+                          <p class="u-gallery-text"></p>
+                        </div>
+                      </div>
+                      <div class="u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-3" data-image-width="2338" data-image-height="1700">
+                        <div class="u-back-slide">
+                          <img class="u-back-image u-expanded" src="images/IMG_031.jpg">
+                        </div>
+                        <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-3">
+                          <h3 class="u-gallery-heading"></h3>
+                          <p class="u-gallery-text"></p>
+                        </div>
+                        <style data-mode="XL" data-visited="true"></style>
+                        <style data-mode="LG"></style>
+                        <style data-mode="MD"></style>
+                        <style data-mode="SM" data-visited="true"></style>
+                        <style data-mode="XS"></style>
+                      </div>
+                      <div class="u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-4" data-image-width="2338" data-image-height="1700">
+                        <div class="u-back-slide">
+                          <img class="u-back-image u-expanded" src="images/IMG_030.jpg">
+                        </div>
+                        <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-4">
+                          <h3 class="u-gallery-heading"></h3>
+                          <p class="u-gallery-text"></p>
+                        </div>
+                        <style data-mode="XL" data-visited="true"></style>
+                        <style data-mode="LG"></style>
+                        <style data-mode="MD"></style>
+                        <style data-mode="SM" data-visited="true"></style>
+                        <style data-mode="XS"></style>
+                      </div>
+                      <div class="u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-5" data-image-width="1624" data-image-height="1286">
+                        <div class="u-back-slide">
+                          <img class="u-back-image u-expanded" src="images/IMG_035.jpg">
+                        </div>
+                        <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-5">
+                          <h3 class="u-gallery-heading"></h3>
+                          <p class="u-gallery-text"></p>
+                        </div>
+                        <style data-mode="XL" data-visited="true"></style>
+                        <style data-mode="LG"></style>
+                        <style data-mode="MD"></style>
+                        <style data-mode="SM" data-visited="true"></style>
+                        <style data-mode="XS"></style>
+                      </div>
+                      <div class="u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-6" data-image-width="1009" data-image-height="709">
+                        <div class="u-back-slide">
+                          <img class="u-back-image u-expanded" src="images/SternB1.jpg">
+                        </div>
+                        <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-6">
+                          <h3 class="u-gallery-heading"></h3>
+                          <p class="u-gallery-text"></p>
+                        </div>
+                        <style data-mode="XL" data-visited="true"></style>
+                        <style data-mode="LG"></style>
+                        <style data-mode="MD"></style>
+                        <style data-mode="SM" data-visited="true"></style>
+                        <style data-mode="XS"></style>
+                      </div>
+                      <div class="u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-7" data-image-width="1746" data-image-height="1233">
+                        <div class="u-back-slide">
+                          <img class="u-back-image u-expanded" src="images/stern8.jpg">
+                        </div>
+                        <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-7">
+                          <h3 class="u-gallery-heading"></h3>
+                          <p class="u-gallery-text"></p>
+                        </div>
+                        <style data-mode="XL" data-visited="true"></style>
+                        <style data-mode="LG"></style>
+                        <style data-mode="MD"></style>
+                        <style data-mode="SM" data-visited="true"></style>
+                        <style data-mode="XS"></style>
+                      </div>
+                      <div class="u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-8" data-image-width="1001" data-image-height="1417">
+                        <div class="u-back-slide">
+                          <img class="u-back-image u-expanded" src="images/Plakat-1.jpg">
+                        </div>
+                        <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-8">
+                          <h3 class="u-gallery-heading"></h3>
+                          <p class="u-gallery-text"></p>
+                        </div>
+                        <style data-mode="XL" data-visited="true"></style>
+                        <style data-mode="LG"></style>
+                        <style data-mode="MD"></style>
+                        <style data-mode="SM" data-visited="true"></style>
+                        <style data-mode="XS"></style>
+                      </div>
+                      <div class="u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-9" data-image-width="1181" data-image-height="886">
+                        <div class="u-back-slide">
+                          <img class="u-back-image u-expanded" src="images/zeitungen1.jpg">
+                        </div>
+                        <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-9">
+                          <h3 class="u-gallery-heading"></h3>
+                          <p class="u-gallery-text"></p>
+                        </div>
+                        <style data-mode="XL" data-visited="true"></style>
+                        <style data-mode="LG"></style>
+                        <style data-mode="MD"></style>
+                        <style data-mode="SM" data-visited="true"></style>
+                        <style data-mode="XS"></style>
+                      </div>
+                    </div>
+                    <a class="u-absolute-vcenter u-carousel-control u-carousel-control-prev u-grey-70 u-icon-circle u-opacity u-opacity-70 u-spacing-10 u-text-white u-carousel-control-1" href="#carousel-4425" role="button" data-u-slide="prev">
+                      <span aria-hidden="true">
+                        <svg viewBox="0 0 451.847 451.847"><path d="M97.141,225.92c0-8.095,3.091-16.192,9.259-22.366L300.689,9.27c12.359-12.359,32.397-12.359,44.751,0
+c12.354,12.354,12.354,32.388,0,44.748L173.525,225.92l171.903,171.909c12.354,12.354,12.354,32.391,0,44.744
+c-12.354,12.365-32.386,12.365-44.745,0l-194.29-194.281C100.226,242.115,97.141,234.018,97.141,225.92z"></path></svg>
+                      </span>
+                      <span class="sr-only">
+                        <svg viewBox="0 0 451.847 451.847"><path d="M97.141,225.92c0-8.095,3.091-16.192,9.259-22.366L300.689,9.27c12.359-12.359,32.397-12.359,44.751,0
+c12.354,12.354,12.354,32.388,0,44.748L173.525,225.92l171.903,171.909c12.354,12.354,12.354,32.391,0,44.744
+c-12.354,12.365-32.386,12.365-44.745,0l-194.29-194.281C100.226,242.115,97.141,234.018,97.141,225.92z"></path></svg>
+                      </span>
+                    </a>
+                    <a class="u-absolute-vcenter u-carousel-control u-carousel-control-next u-grey-70 u-icon-circle u-opacity u-opacity-70 u-spacing-10 u-text-white u-carousel-control-2" href="#carousel-4425" role="button" data-u-slide="next">
+                      <span aria-hidden="true">
+                        <svg viewBox="0 0 451.846 451.847"><path d="M345.441,248.292L151.154,442.573c-12.359,12.365-32.397,12.365-44.75,0c-12.354-12.354-12.354-32.391,0-44.744
+L278.318,225.92L106.409,54.017c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.391-12.359,44.75,0l194.287,194.284
+c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,248.292z"></path></svg>
+                      </span>
+                      <span class="sr-only">
+                        <svg viewBox="0 0 451.846 451.847"><path d="M345.441,248.292L151.154,442.573c-12.359,12.365-32.397,12.365-44.75,0c-12.354-12.354-12.354-32.391,0-44.744
+L278.318,225.92L106.409,54.017c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.391-12.359,44.75,0l194.287,194.284
+c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,248.292z"></path></svg>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="u-align-left u-container-style u-layout-cell u-opacity u-opacity-70 u-right-cell u-size-25 u-size-xs-60 u-white u-layout-cell-2">
+                <div class="u-border-1 u-border-grey-75 u-container-layout u-container-layout-2">
+                  <h2 class="u-text u-text-custom-color-1 u-text-default u-text-1"> Layout</h2>
+                  <a href="" class="u-border-2 u-border-white u-btn u-btn-rectangle u-button-style u-none u-btn-1">nach oben</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
-
-  <section class="section" id="cv" aria-label="Lebenslauf & Erfolge">
-    <h2>Lebenslauf & Erfolge</h2>
-    <p class="subtitle">Kurzüberblick aus bereitgestellten Unterlagen (Lebenslauf PDF, ausgewählte Errungenschaften).</n>p>
-    <div class="grid cards">
-      <div class="card">
-        <strong>Lebenslauf</strong>
-        <p>Stationen und Projekte in Illustration und Design, u.a. Editorial- und Buchgestaltung.</p>
-        <a class="btn" href="images/Lebenslauf.pdf" target="_blank" rel="noopener">PDF öffnen</a>
+    </section>
+    <section class="u-align-center u-clearfix u-custom-color-1 u-section-5" id="carousel_7748">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-clearfix u-expanded-width u-gutter-0 u-layout-wrap u-layout-wrap-1">
+          <div class="u-layout" style="">
+            <div class="u-layout-row" style="">
+              <div class="u-align-left u-container-style u-layout-cell u-left-cell u-shape-rectangle u-size-35 u-size-xs-60 u-layout-cell-1" src="">
+                <div class="u-container-layout u-container-layout-1" src="">
+                  <div class="u-border-custom-color-1 u-carousel u-expanded-width-sm u-expanded-width-xs u-gallery u-gallery-slider u-layout-carousel u-lightbox u-no-transition u-show-text-on-hover u-gallery-1" id="carousel-b19c" data-interval="5000" data-u-ride="carousel">
+                    <ol class="u-absolute-hcenter u-carousel-indicators u-carousel-indicators-1">
+                      <li data-u-target="#carousel-b19c" data-u-slide-to="0" class="u-active u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                      <li data-u-target="#carousel-b19c" data-u-slide-to="1" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                      <li data-u-target="#carousel-b19c" data-u-slide-to="2" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                      <li data-u-target="#carousel-b19c" data-u-slide-to="3" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                      <li data-u-target="#carousel-b19c" data-u-slide-to="4" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                      <li data-u-target="#carousel-b19c" data-u-slide-to="5" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                      <li data-u-target="#carousel-b19c" data-u-slide-to="6" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                      <li data-u-target="#carousel-b19c" data-u-slide-to="7" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                      <li data-u-target="#carousel-b19c" data-u-slide-to="8" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                      <li data-u-target="#carousel-b19c" data-u-slide-to="9" class="u-grey-70 u-shape-circle" style="width: 10px; height: 10px;"></li>
+                    </ol>
+                    <div class="u-carousel-inner u-gallery-inner" role="listbox">
+                      <div class="u-active u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-1">
+                        <div class="u-back-slide" data-image-width="861" data-image-height="615">
+                          <img class="u-back-image u-expanded" src="images/logo3.png" alt="">
+                        </div>
+                        <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-1">
+                          <h3 class="u-gallery-heading"></h3>
+                          <p class="u-gallery-text"></p>
+                        </div>
+                      </div>
+                      <div class="u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-2">
+                        <div class="u-back-slide" data-image-width="492" data-image-height="369">
+                          <img class="u-back-image u-expanded" src="images/logo4.png" alt="">
+                        </div>
+                        <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-2">
+                          <h3 class="u-gallery-heading"></h3>
+                          <p class="u-gallery-text"></p>
+                        </div>
+                      </div>
+                      <div class="u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-3" data-image-width="369" data-image-height="492">
+                        <div class="u-back-slide">
+                          <img class="u-back-image u-expanded" src="images/logo6.png">
+                        </div>
+                        <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-3">
+                          <h3 class="u-gallery-heading"></h3>
+                          <p class="u-gallery-text"></p>
+                        </div>
+                        <style data-mode="XL" data-visited="true"></style>
+                        <style data-mode="LG"></style>
+                        <style data-mode="MD"></style>
+                        <style data-mode="SM" data-visited="true"></style>
+                        <style data-mode="XS"></style>
+                      </div>
+                      <div class="u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-4" data-image-width="492" data-image-height="492">
+                        <div class="u-back-slide">
+                          <img class="u-back-image u-expanded" src="images/logo9.png">
+                        </div>
+                        <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-4">
+                          <h3 class="u-gallery-heading"></h3>
+                          <p class="u-gallery-text"></p>
+                        </div>
+                        <style data-mode="XL" data-visited="true"></style>
+                        <style data-mode="LG"></style>
+                        <style data-mode="MD"></style>
+                        <style data-mode="SM" data-visited="true"></style>
+                        <style data-mode="XS"></style>
+                      </div>
+                      <div class="u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-5" data-image-width="863" data-image-height="984">
+                        <div class="u-back-slide">
+                          <img class="u-back-image u-expanded" src="images/logo11.png">
+                        </div>
+                        <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-5">
+                          <h3 class="u-gallery-heading"></h3>
+                          <p class="u-gallery-text"></p>
+                        </div>
+                        <style data-mode="XL" data-visited="true"></style>
+                        <style data-mode="LG"></style>
+                        <style data-mode="MD"></style>
+                        <style data-mode="SM" data-visited="true"></style>
+                        <style data-mode="XS"></style>
+                      </div>
+                      <div class="u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-6" data-image-width="1230" data-image-height="984">
+                        <div class="u-back-slide">
+                          <img class="u-back-image u-expanded" src="images/logo12.png">
+                        </div>
+                        <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-6">
+                          <h3 class="u-gallery-heading"></h3>
+                          <p class="u-gallery-text"></p>
+                        </div>
+                        <style data-mode="XL" data-visited="true"></style>
+                        <style data-mode="LG"></style>
+                        <style data-mode="MD"></style>
+                        <style data-mode="SM" data-visited="true"></style>
+                        <style data-mode="XS"></style>
+                      </div>
+                      <div class="u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-7" data-image-width="1721" data-image-height="738">
+                        <div class="u-back-slide">
+                          <img class="u-back-image u-expanded" src="images/logo14.png">
+                        </div>
+                        <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-7">
+                          <h3 class="u-gallery-heading"></h3>
+                          <p class="u-gallery-text"></p>
+                        </div>
+                        <style data-mode="XL" data-visited="true"></style>
+                        <style data-mode="LG"></style>
+                        <style data-mode="MD"></style>
+                        <style data-mode="SM" data-visited="true"></style>
+                        <style data-mode="XS"></style>
+                      </div>
+                      <div class="u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-8" data-image-width="984" data-image-height="984">
+                        <div class="u-back-slide">
+                          <img class="u-back-image u-expanded" src="images/logo16.png">
+                        </div>
+                        <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-8">
+                          <h3 class="u-gallery-heading"></h3>
+                          <p class="u-gallery-text"></p>
+                        </div>
+                        <style data-mode="XL" data-visited="true"></style>
+                        <style data-mode="LG"></style>
+                        <style data-mode="MD"></style>
+                        <style data-mode="SM" data-visited="true"></style>
+                        <style data-mode="XS"></style>
+                      </div>
+                      <div class="u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-9" data-image-width="738" data-image-height="984">
+                        <div class="u-back-slide">
+                          <img class="u-back-image u-expanded" src="images/q1.png">
+                        </div>
+                        <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-9">
+                          <h3 class="u-gallery-heading"></h3>
+                          <p class="u-gallery-text"></p>
+                        </div>
+                        <style data-mode="XL" data-visited="true"></style>
+                        <style data-mode="LG"></style>
+                        <style data-mode="MD"></style>
+                        <style data-mode="SM" data-visited="true"></style>
+                        <style data-mode="XS"></style>
+                      </div>
+                      <div class="u-carousel-item u-effect-fade u-gallery-item u-shape-rectangle u-carousel-item-10" data-image-width="1250" data-image-height="1496">
+                        <div class="u-back-slide">
+                          <img class="u-back-image u-expanded" src="images/q2.png">
+                        </div>
+                        <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-10">
+                          <h3 class="u-gallery-heading"></h3>
+                          <p class="u-gallery-text"></p>
+                        </div>
+                        <style data-mode="XL" data-visited="true"></style>
+                        <style data-mode="LG"></style>
+                        <style data-mode="MD"></style>
+                        <style data-mode="SM" data-visited="true"></style>
+                        <style data-mode="XS"></style>
+                      </div>
+                    </div>
+                    <a class="u-absolute-vcenter u-carousel-control u-carousel-control-prev u-grey-70 u-icon-circle u-opacity u-opacity-70 u-spacing-10 u-text-white u-carousel-control-1" href="#carousel-b19c" role="button" data-u-slide="prev">
+                      <span aria-hidden="true">
+                        <svg viewBox="0 0 451.847 451.847"><path d="M97.141,225.92c0-8.095,3.091-16.192,9.259-22.366L300.689,9.27c12.359-12.359,32.397-12.359,44.751,0
+c12.354,12.354,12.354,32.388,0,44.748L173.525,225.92l171.903,171.909c12.354,12.354,12.354,32.391,0,44.744
+c-12.354,12.365-32.386,12.365-44.745,0l-194.29-194.281C100.226,242.115,97.141,234.018,97.141,225.92z"></path></svg>
+                      </span>
+                      <span class="sr-only">
+                        <svg viewBox="0 0 451.847 451.847"><path d="M97.141,225.92c0-8.095,3.091-16.192,9.259-22.366L300.689,9.27c12.359-12.359,32.397-12.359,44.751,0
+c12.354,12.354,12.354,32.388,0,44.748L173.525,225.92l171.903,171.909c12.354,12.354,12.354,32.391,0,44.744
+c-12.354,12.365-32.386,12.365-44.745,0l-194.29-194.281C100.226,242.115,97.141,234.018,97.141,225.92z"></path></svg>
+                      </span>
+                    </a>
+                    <a class="u-absolute-vcenter u-carousel-control u-carousel-control-next u-grey-70 u-icon-circle u-opacity u-opacity-70 u-spacing-10 u-text-white u-carousel-control-2" href="#carousel-b19c" role="button" data-u-slide="next">
+                      <span aria-hidden="true">
+                        <svg viewBox="0 0 451.846 451.847"><path d="M345.441,248.292L151.154,442.573c-12.359,12.365-32.397,12.365-44.75,0c-12.354-12.354-12.354-32.391,0-44.744
+L278.318,225.92L106.409,54.017c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.391-12.359,44.75,0l194.287,194.284
+c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,248.292z"></path></svg>
+                      </span>
+                      <span class="sr-only">
+                        <svg viewBox="0 0 451.846 451.847"><path d="M345.441,248.292L151.154,442.573c-12.359,12.365-32.397,12.365-44.75,0c-12.354-12.354-12.354-32.391,0-44.744
+L278.318,225.92L106.409,54.017c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.391-12.359,44.75,0l194.287,194.284
+c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,248.292z"></path></svg>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="u-align-left u-container-style u-layout-cell u-opacity u-opacity-70 u-right-cell u-size-25 u-size-xs-60 u-white u-layout-cell-2">
+                <div class="u-border-1 u-border-grey-75 u-container-layout u-container-layout-2">
+                  <h2 class="u-text u-text-custom-color-1 u-text-default u-text-1"> Logos</h2>
+                  <a href="" class="u-border-2 u-border-white u-btn u-btn-rectangle u-button-style u-none u-btn-1">nach oben</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="card">
-        <strong>Ausgewählte Erfolge</strong>
-        <ul style="margin:0 0 0 16px; padding:0">
-          <li>Langjährige Erfahrung in Karikatur & Illustration</li>
-          <li>Editorial-Designs für Magazine/Poster</li>
-          <li>Logokonzeption und Layoutsysteme</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="kontakt" aria-label="Kontaktformular">
-    <h2>Kontakt</h2>
-    <p class="subtitle">Schreiben Sie mir für Anfragen zu Illustrationen, Layouts oder Logos.</p>
-    <form name="contact" method="POST" action="https://formspree.io/f/mzzzyyyy">
-      <div class="grid" style="grid-template-columns:1fr 1fr">
-        <input type="text" name="name" placeholder="Ihr Name" required />
-        <input type="email" name="email" placeholder="Ihre E‑Mail" required />
-      </div>
-      <input type="text" name="subject" placeholder="Betreff" />
-      <textarea name="message" placeholder="Ihre Nachricht" required></textarea>
-      <button class="btn" type="submit">Nachricht senden</button>
-    </form>
-    <p class="subtitle" style="margin-top:10px">Oder per E‑Mail: <a href="mailto:felix.bitel.de@gmail.com">felix.bitel.de@gmail.com</a></p>
-  </section>
-
-  <footer>
-    <div class="foot">
-      <span>© <span id="y"></span> Felix Bitel</span>
-      <span><a href="#top">Nach oben</a></span>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-    const c = document.getElementById('orb');
-    const x = c.getContext('2d');
-    const DPR = Math.min(2, window.devicePixelRatio || 1);
-    let w, h; function size(){ w = c.width = innerWidth * DPR; h = c.height = 420 * DPR; c.style.height = '420px'; } size(); addEventListener('resize', size);
-    const dots = Array.from({length: 80}, (_,i)=>({ r: 30 + Math.random()*220, a: Math.random()*Math.PI*2, s: .001 + Math.random()*.004*(i%2?1:1.6), z: .5 + Math.random()*1.5 }));
-    (function draw(){ x.clearRect(0,0,w,h); const cx=w/2, cy=h/2; const grad=x.createRadialGradient(cx,cy,20,cx,cy,Math.min(w,h)/2); grad.addColorStop(0,'rgba(0,209,255,.08)'); grad.addColorStop(1,'rgba(0,0,0,0)'); x.fillStyle=grad; x.fillRect(0,0,w,h); dots.forEach(d=>{ d.a+=d.s; const px=cx+Math.cos(d.a)*d.r; const py=cy+Math.sin(d.a)*d.r*.6; const r=2*d.z; const g=x.createRadialGradient(px,py,0,px,py,16*r); g.addColorStop(0,`rgba(0,209,255,${.35*d.z})`); g.addColorStop(1,'rgba(0,0,0,0)'); x.fillStyle=g; x.beginPath(); x.arc(px,py,16*r,0,Math.PI*2); x.fill(); }); requestAnimationFrame(draw); })();
-  </script>
-</body>
-</html>
+    </section>
+    
+    
+    <footer class="u-align-center u-clearfix u-footer u-palette-5-dark-3 u-footer" id="sec-4f16"><div class="u-clearfix u-sheet u-sheet-1">
+        <p class="u-small-text u-text u-text-variant u-text-1">
+          <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-1" href="mailto:felix.bitel.de@gmail.com">Post E-mail<br>
+          </a>
+        </p>
+      </div></footer>
+    <section class="u-backlink u-clearfix u-grey-80">
+      <a class="u-link" href="" target="_blank">
+    </section>
+  
+</body></html>
